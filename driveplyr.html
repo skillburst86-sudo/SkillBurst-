@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DrivePlyr – SkillBurst</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { margin: 0; background: #000; display: flex; justify-content: center; align-items: center; height: 100vh; }
+    video { width: 100%; height: auto; max-height: 100vh; background: #000; }
+  </style>
+</head>
+<body>
+  <video id="player" controls autoplay preload="metadata"></video>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const fileId = params.get("id");
+    if (fileId) {
+      document.getElementById("player").src = "https://drive.google.com/uc?export=download&id=" + fileId;
+    } else {
+      document.body.innerHTML =
+        "<h2 style='color:white;text-align:center'>⚠ No file ID provided.</h2>";
+    }
+  </script>
+</body>
+</html>
